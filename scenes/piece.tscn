@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://bnxwq1438qbpk"]
+
+[ext_resource type="Script" uid="uid://cy5poo6xgfmcx" path="res://scripts/piece.gd" id="1_gebih"]
+
+[sub_resource type="Gradient" id="Gradient_tvnf0"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_gebih"]
+gradient = SubResource("Gradient_tvnf0")
+width = 60
+height = 60
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s58gp"]
+size = Vector2(60, 60)
+
+[node name="Piece" type="Area2D"]
+disable_mode = 2
+script = ExtResource("1_gebih")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_gebih")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_s58gp")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

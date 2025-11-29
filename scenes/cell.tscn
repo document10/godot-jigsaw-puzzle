@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://csbkop5u2lnc"]
+
+[ext_resource type="Script" uid="uid://bidth5d61xa1j" path="res://scripts/cell.gd" id="1_upbjj"]
+
+[sub_resource type="Gradient" id="Gradient_upbjj"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0s7o3"]
+gradient = SubResource("Gradient_upbjj")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s58gp"]
+size = Vector2(50, 50)
+
+[node name="Piece" type="Area2D" groups=["cells"]]
+script = ExtResource("1_upbjj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -0.5)
+texture = SubResource("GradientTexture2D_0s7o3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_s58gp")
