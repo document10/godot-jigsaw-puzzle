@@ -18,6 +18,8 @@ func init_piece(_index,texture,pos,piece_size):
 func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if Global.dragging and dragging == false:
 		return
+	if cell_index == index:
+		return
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.is_pressed():
 			dragging=true

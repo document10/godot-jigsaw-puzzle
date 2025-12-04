@@ -6,19 +6,49 @@ extends Node2D
 @onready var pieces = $Pieces
 @onready var piece_scene = preload("res://scenes/piece.tscn")
 
+@onready var mainMenu :Control = $MainMenu
+
 var piece_size :Vector2 =Vector2(100,100)
+var last_level_finished = false
+var custom_level = []
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	#RenderingServer.set_default_clear_color(Color.GREEN)
 	Global.get_all_levels()
-	Global.init_level(1)
-	Global.level_complete.connect(next_level)
-	init_game()
+	Global.level_complete.connect(level_complete)
+	Global.end_game.connect(game_complete)
+	last_level_finished=false
 
-func next_level():
-	Global.next_level()
-	init_game()
+func level_complete():
+	if Global.current_level!=-1:
+		Global.next_level()
+		if not last_level_finished:
+			init_game()
+		else:
+			mainMenu.show()
+	else:
+		mainMenu.show()
+func game_complete():
+	last_level_finished=true
+	print("GAME COMPLETE")
+
+func init_custom_level(difficulty):
+	last_level_finished=false
+	custom_level=Global.generate_random_level(difficulty)
+	Global.load_custom_level(custom_level)
+	RenderingServer.set_default_clear_color(custom_level[4])
+	generate_pieces()
+	draw_cells()
+
+func restart_custom_level():
+	last_level_finished=false
+	Global.load_custom_level(custom_level)
+	RenderingServer.set_default_clear_color(custom_level[4])
+	generate_pieces()
+	draw_cells()
 
 func init_game():
+	last_level_finished=false
 	var color = 1.0 / (Global.levels.size())*(Global.current_level)
 	RenderingServer.set_default_clear_color(Color(color,color,color,1))
 	generate_pieces()
@@ -54,6 +84,40 @@ func generate_pieces():
 			piece.init_piece(idx, sub_text,pos,piece_size)
 
 func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("pause"):
+		if mainMenu.visible:
+			mainMenu.hide()
+		else:
+			mainMenu.show()
 	if event.is_action_pressed("restart"):
 		Global.restart_level()
-		init_game()
+		if Global.current_level!=-1:
+			init_game()
+		else:
+			restart_custom_level();
+
+
+func _on_button_pressed() -> void:
+	Global.init_level(1)
+	init_game()
+	mainMenu.hide()
+
+
+func _on_easy_game_pressed() -> void:
+	init_custom_level(1)
+	mainMenu.hide()
+
+
+func _on_medium_game_pressed() -> void:
+	init_custom_level(2)
+	mainMenu.hide()
+
+
+func _on_hard_game_pressed() -> void:
+	init_custom_level(3)
+	mainMenu.hide()
+
+
+func _on_random_game_pressed() -> void:
+	init_custom_level(4)
+	mainMenu.hide()
