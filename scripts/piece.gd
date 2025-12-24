@@ -2,7 +2,7 @@ extends Area2D
 
 @onready var sprite2d: Sprite2D = $Sprite2D
 @onready var collision: CollisionShape2D = $CollisionShape2D
-
+@export var audioManager: Node
 var dragging:bool = false
 var drag_offset = Vector2.ZERO
 var index = -1
@@ -22,6 +22,7 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 		return
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.is_pressed():
+			audioManager.play_sound("pickup")
 			dragging=true
 			if cell_index!=-1:
 				var cell = Global.find_cell(cell_index)
@@ -29,7 +30,7 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 				cell_index=-1
 			Global.dragging=true
 			z_index=100
-			drag_offset=global_position-get_global_mouse_position()
+			drag_offset=global_position-Vector2(DisplayServer.mouse_get_position())
 		elif event.is_released():
 			dragging=false
 			Global.dragging=false
@@ -46,8 +47,14 @@ func drop_piece():
 					cell_index = cell.index
 					position = cell.global_position
 					cell.occupy(true)
+					if cell_index==index:
+						audioManager.play_sound("bonus")
+						Global.add_score(5)
+					else:
+						audioManager.play_sound("drop")
 					return
 				else:
+					audioManager.play_sound("drop")
 					return
 
 func _physics_process(delta: float) -> void:
