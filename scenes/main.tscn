@@ -1,11 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://bu3lm37fngvfn"]
+[gd_scene load_steps=11 format=3 uid="uid://bu3lm37fngvfn"]
 
 [ext_resource type="Script" uid="uid://bdqjoe078vsyq" path="res://scripts/main.gd" id="1_o5qli"]
 [ext_resource type="Theme" uid="uid://cj8jss0gxhfw1" path="res://assets/UI.tres" id="2_0wfyh"]
+[ext_resource type="Texture2D" uid="uid://ucyo8wptcjnv" path="res://assets/music.png" id="3_choun"]
 [ext_resource type="AudioStream" uid="uid://d2q0ntlfkq6jh" path="res://assets/drop.wav" id="3_o6xl0"]
 [ext_resource type="Script" uid="uid://b1xnlpkykrkch" path="res://scripts/audio_manager.gd" id="3_sugp2"]
 [ext_resource type="AudioStream" uid="uid://bdsvh2rg1h3he" path="res://assets/music.wav" id="4_85g3d"]
 [ext_resource type="AudioStream" uid="uid://ccmb3b34bl73" path="res://assets/bonus.wav" id="4_tipki"]
+[ext_resource type="Texture2D" uid="uid://6uhy0f0n5bwv" path="res://assets/sfx.png" id="4_ya4ey"]
 [ext_resource type="AudioStream" uid="uid://ckub25kn1wtcx" path="res://assets/pickup.wav" id="5_85g3d"]
 [ext_resource type="AudioStream" uid="uid://c1ab032o4qct3" path="res://assets/select.wav" id="6_choun"]
 
@@ -19,39 +21,125 @@ script = ExtResource("1_o5qli")
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.5, 0.5)
 
+[node name="LevelComplete" type="Control" parent="."]
+visible = false
+layout_direction = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_0wfyh")
+
+[node name="Panel" type="Panel" parent="LevelComplete"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1920.0
+offset_top = -1080.0
+offset_right = 1930.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_0wfyh")
+
+[node name="FinalScore" type="Label" parent="LevelComplete/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -962.0
+offset_top = 1.0
+offset_right = 1007.0
+offset_bottom = 350.0
+grow_horizontal = 2
+theme = ExtResource("2_0wfyh")
+theme_override_font_sizes/font_size = 256
+text = "Level Complete!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Continue" type="Button" parent="LevelComplete/Panel"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -221.0
+offset_right = 694.0
+grow_vertical = 0
+theme = ExtResource("2_0wfyh")
+theme_override_font_sizes/font_size = 156
+text = "Continue"
+
+[node name="Restart" type="Button" parent="LevelComplete/Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -285.5
+offset_top = -221.0
+offset_right = 285.5
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_0wfyh")
+theme_override_font_sizes/font_size = 156
+text = "Restart"
+
+[node name="Home" type="Button" parent="LevelComplete/Panel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -571.0
+offset_top = -221.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("2_0wfyh")
+theme_override_font_sizes/font_size = 156
+text = "Home"
+
 [node name="MainMenu" type="Control" parent="."]
 layout_direction = 2
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -1924.0
-offset_top = -1080.0
-offset_right = 1916.0
-offset_bottom = 1080.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_0wfyh")
 
 [node name="Panel" type="Panel" parent="MainMenu"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -1920.0
+offset_top = -1080.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_0wfyh")
 
 [node name="Title" type="Label" parent="MainMenu/Panel"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -324.5
-offset_top = 54.0
-offset_right = 310.5
-offset_bottom = 191.0
+offset_left = -744.0
+offset_right = 744.0
+offset_bottom = 349.0
 grow_horizontal = 2
+theme = ExtResource("2_0wfyh")
 theme_override_font_sizes/font_size = 256
-text = "Jigsaw puzzle"
+text = "Visual Trivia"
 
 [node name="Level1" type="Button" parent="MainMenu/Panel"]
 layout_mode = 1
@@ -64,7 +152,7 @@ offset_right = 558.6948
 offset_bottom = 769.0
 grow_horizontal = 2
 theme = ExtResource("2_0wfyh")
-text = "Start Level one"
+text = "Start Level One"
 autowrap_mode = 3
 
 [node name="EasyGame" type="Button" parent="MainMenu/Panel"]
@@ -130,6 +218,23 @@ theme = ExtResource("2_0wfyh")
 text = "Start Random Game"
 autowrap_mode = 3
 
+[node name="Exit" type="Button" parent="MainMenu/Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -154.0
+offset_top = -439.0
+offset_right = 154.0
+offset_bottom = -256.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_0wfyh")
+text = "Exit"
+autowrap_mode = 3
+
 [node name="Help" type="Label" parent="MainMenu/Panel"]
 layout_mode = 1
 anchors_preset = 7
@@ -142,6 +247,7 @@ offset_top = -179.0
 offset_right = 921.5
 grow_horizontal = 2
 grow_vertical = 0
+theme = ExtResource("2_0wfyh")
 theme_override_font_sizes/font_size = 64
 text = "©Popescul George Teodor, Georgiana Murgu, Bojoga Andrei
 ©FIESC, USV, Elemente grafica calculator, proiect."
@@ -158,10 +264,36 @@ offset_left = -921.5
 offset_right = 921.5
 offset_bottom = 107.0
 grow_horizontal = 2
+theme = ExtResource("2_0wfyh")
 theme_override_font_sizes/font_size = 64
-text = "Esc: Pause; R: Restart"
+text = "Esc: Menu; R: Restart"
 horizontal_alignment = 1
 autowrap_mode = 3
+
+[node name="Music" type="Button" parent="MainMenu/Panel"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 278.0
+offset_top = -264.0
+offset_right = 542.0
+grow_vertical = 0
+theme = ExtResource("2_0wfyh")
+toggle_mode = true
+icon = ExtResource("3_choun")
+
+[node name="SFX" type="Button" parent="MainMenu/Panel"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -264.0
+offset_right = 264.0
+grow_vertical = 0
+theme = ExtResource("2_0wfyh")
+toggle_mode = true
+icon = ExtResource("4_ya4ey")
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
@@ -175,6 +307,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_0wfyh")
 
 [node name="Elapsed" type="Label" parent="GameUI"]
 layout_mode = 1
@@ -182,6 +315,7 @@ offset_left = -1896.0
 offset_top = -1045.0
 offset_right = -1747.0
 offset_bottom = -968.0
+theme = ExtResource("2_0wfyh")
 theme_override_font_sizes/font_size = 56
 text = "Time:"
 
@@ -192,24 +326,36 @@ script = ExtResource("3_sugp2")
 stream = ExtResource("4_85g3d")
 volume_db = -5.0
 autoplay = true
+bus = &"Music"
 
 [node name="Bonus" type="AudioStreamPlayer" parent="AudioManager"]
 stream = ExtResource("4_tipki")
 volume_db = -10.0
+bus = &"SFX"
 
 [node name="Drop" type="AudioStreamPlayer" parent="AudioManager"]
 stream = ExtResource("3_o6xl0")
 volume_db = -10.0
+bus = &"SFX"
 
 [node name="Select" type="AudioStreamPlayer" parent="AudioManager"]
 stream = ExtResource("6_choun")
+volume_db = -10.0
+bus = &"SFX"
 
 [node name="Pickup" type="AudioStreamPlayer" parent="AudioManager"]
 stream = ExtResource("5_85g3d")
 volume_db = -20.0
+bus = &"SFX"
 
+[connection signal="pressed" from="LevelComplete/Panel/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="LevelComplete/Panel/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="LevelComplete/Panel/Home" to="." method="_on_home_pressed"]
 [connection signal="pressed" from="MainMenu/Panel/Level1" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="MainMenu/Panel/EasyGame" to="." method="_on_easy_game_pressed"]
 [connection signal="pressed" from="MainMenu/Panel/MediumGame" to="." method="_on_medium_game_pressed"]
 [connection signal="pressed" from="MainMenu/Panel/HardGame" to="." method="_on_hard_game_pressed"]
 [connection signal="pressed" from="MainMenu/Panel/RandomGame" to="." method="_on_random_game_pressed"]
+[connection signal="pressed" from="MainMenu/Panel/Exit" to="." method="_on_exit_pressed"]
+[connection signal="toggled" from="MainMenu/Panel/Music" to="." method="_on_music_toggled"]
+[connection signal="toggled" from="MainMenu/Panel/SFX" to="." method="_on_sfx_toggled"]

@@ -14,7 +14,6 @@ func init_piece(_index,texture,pos,piece_size):
 	position = pos
 	collision.shape.set("size",piece_size)
 
-
 func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if Global.dragging and dragging == false:
 		return
@@ -38,6 +37,7 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 			drop_piece()
 			if Global.check_win()==true:
 				print("VICTORY")
+				audioManager.play_sound("select")
 
 func drop_piece():
 	var overlapping = get_overlapping_areas()

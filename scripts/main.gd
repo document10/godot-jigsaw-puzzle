@@ -9,34 +9,33 @@ extends Node2D
 @onready var gameui :Control = $GameUI
 @onready var elapsed :Label= $GameUI/Elapsed
 
+@onready var completeui :Control = $LevelComplete
+@onready var final_score :Label = $LevelComplete/Panel/FinalScore
+
 @onready var mainMenu :Control = $MainMenu
 
 @onready var audioManager = $AudioManager
+
+@onready var sfx_bus=AudioServer.get_bus_index("SFX")
+@onready var music_bus=AudioServer.get_bus_index("Music")
 
 var piece_size :Vector2 =Vector2(100,100)
 var last_level_finished = false
 var custom_level = []
 var timer = 0
-# Called when the node enters the scene tree for the first time.
+
 func _ready() -> void:
-	#RenderingServer.set_default_clear_color(Color.GREEN)
+	RenderingServer.set_default_clear_color(Color.AQUAMARINE)
 	Global.get_all_levels()
 	Global.level_complete.connect(level_complete)
 	Global.end_game.connect(game_complete)
 	last_level_finished=false
 
 func level_complete():
-	if Global.current_level!=-1:
-		Global.next_level()
-		if not last_level_finished:
-			init_game()
-		else:
-			mainMenu.show()
-			gameui.hide()
-	else:
-		mainMenu.show()
-		gameui.hide()
-		
+	completeui.show()
+	gameui.hide()
+	final_score.text = "End time: %.2f\nFinal score: %d"%[timer,roundi(Global.score)]
+
 func game_complete():
 	last_level_finished=true
 
@@ -102,7 +101,7 @@ func generate_pieces():
 			k+=1
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("pause"):
+	if event.is_action_pressed("pause") and not completeui.visible:
 		if mainMenu.visible:
 			mainMenu.hide()
 			gameui.show()
@@ -146,4 +145,39 @@ func _on_random_game_pressed() -> void:
 func _physics_process(delta: float) -> void:
 	Global.red_score(delta)
 	timer+=delta
-	elapsed.text="Time:"+str(roundi(timer))+"\nScore:"+str(roundi(Global.score))
+	elapsed.text = "Time: %.2f\nScore: %d"%[timer,roundi(Global.score)]
+
+
+func _on_sfx_toggled(toggled_on: bool) -> void:
+	AudioServer.set_bus_mute(sfx_bus,toggled_on)
+	
+func _on_music_toggled(toggled_on: bool) -> void:
+	AudioServer.set_bus_mute(music_bus,toggled_on)
+
+func _on_exit_pressed() -> void:
+	get_tree().quit()
+
+func _on_home_pressed() -> void:
+	completeui.hide()
+	mainMenu.show()
+
+func _on_continue_pressed() -> void:
+	completeui.hide()
+	if Global.current_level!=-1:
+		Global.next_level()
+		if not last_level_finished:
+			init_game()
+		else:
+			mainMenu.show()
+			gameui.hide()
+	else:
+		mainMenu.show()
+		gameui.hide()
+
+func _on_restart_pressed() -> void:
+	completeui.hide()
+	Global.restart_level()
+	if Global.current_level!=-1:
+		init_game()
+	else:
+		restart_custom_level();

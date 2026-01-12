@@ -1,7 +1,41 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cj8jss0gxhfw1"]
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://cj8jss0gxhfw1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ric3h"]
+bg_color = Color(0, 0, 0, 0.6862745)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.25, 0.25, 0.25, 1)
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d55dl"]
+bg_color = Color(0, 0, 0, 0.49019608)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.5, 0.5, 0.5, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ia2w"]
+bg_color = Color(0, 0, 0, 0.78431374)
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
 
 [sub_resource type="SystemFont" id="SystemFont_d55dl"]
 
 [resource]
 default_font = SubResource("SystemFont_d55dl")
 default_font_size = 128
+Button/styles/hover = SubResource("StyleBoxFlat_ric3h")
+Button/styles/normal = SubResource("StyleBoxFlat_d55dl")
+Button/styles/pressed = SubResource("StyleBoxFlat_8ia2w")

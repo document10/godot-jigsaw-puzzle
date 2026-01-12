@@ -2,7 +2,7 @@ extends Node
 
 var levels_path:String = "res://assets/levels.csv"
 
-var all_textures = ["res://assets/im1.jpg","res://assets/im2.jpg","res://assets/im3.jpg","res://assets/im4.jpg","res://assets/im5.jpg","res://assets/im6.jpg","res://assets/im7.jpg"]
+var all_textures = ["res://assets/im1.jpg","res://assets/im2.jpg","res://assets/im3.jpg","res://assets/im4.jpg","res://assets/im5.jpg","res://assets/im6.jpg","res://assets/im7.jpg","res://assets/im9.jpg","res://assets/im10.jpg"]
 var cells  = []
 var pieces = []
 var grid_size: Vector2i = Vector2i(3,5)
