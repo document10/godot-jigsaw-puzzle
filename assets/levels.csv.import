@@ -1,17 +1,3 @@
 [remap]
 
-importer="csv_translation"
-type="Translation"
-uid="uid://ctrnbffnoo0gj"
-
-[deps]
-
-files=["res://assets/levels.Image.translation", "res://assets/levels.Horizontal.translation", "res://assets/levels.Vertical.translation"]
-
-source_file="res://assets/levels.csv"
-dest_files=["res://assets/levels.Image.translation", "res://assets/levels.Horizontal.translation", "res://assets/levels.Vertical.translation"]
-
-[params]
-
-compress=true
-delimiter=0
+importer="keep"

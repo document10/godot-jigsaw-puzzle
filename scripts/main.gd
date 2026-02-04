@@ -181,3 +181,8 @@ func _on_restart_pressed() -> void:
 		init_game()
 	else:
 		restart_custom_level();
+
+
+func _on_pause_pressed() -> void:
+	mainMenu.show()
+	gameui.hide()

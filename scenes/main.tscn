@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bu3lm37fngvfn"]
+[gd_scene format=3 uid="uid://bu3lm37fngvfn"]
 
 [ext_resource type="Script" uid="uid://bdqjoe078vsyq" path="res://scripts/main.gd" id="1_o5qli"]
 [ext_resource type="Theme" uid="uid://cj8jss0gxhfw1" path="res://assets/UI.tres" id="2_0wfyh"]
@@ -9,19 +9,20 @@
 [ext_resource type="AudioStream" uid="uid://ccmb3b34bl73" path="res://assets/bonus.wav" id="4_tipki"]
 [ext_resource type="Texture2D" uid="uid://6uhy0f0n5bwv" path="res://assets/sfx.png" id="4_ya4ey"]
 [ext_resource type="AudioStream" uid="uid://ckub25kn1wtcx" path="res://assets/pickup.wav" id="5_85g3d"]
+[ext_resource type="Texture2D" uid="uid://dph7gsjyxw4sm" path="res://assets/pause.png" id="5_ya4ey"]
 [ext_resource type="AudioStream" uid="uid://c1ab032o4qct3" path="res://assets/select.wav" id="6_choun"]
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D" type="Node2D" unique_id=879793703]
 script = ExtResource("1_o5qli")
 
-[node name="Cells" type="Node2D" parent="."]
+[node name="Cells" type="Node2D" parent="." unique_id=798198186]
 
-[node name="Pieces" type="Node2D" parent="."]
+[node name="Pieces" type="Node2D" parent="." unique_id=1809936733]
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=662446633]
 zoom = Vector2(0.5, 0.5)
 
-[node name="LevelComplete" type="Control" parent="."]
+[node name="LevelComplete" type="Control" parent="." unique_id=962419254]
 visible = false
 layout_direction = 2
 layout_mode = 3
@@ -32,7 +33,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_0wfyh")
 
-[node name="Panel" type="Panel" parent="LevelComplete"]
+[node name="Panel" type="Panel" parent="LevelComplete" unique_id=169254753]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -45,7 +46,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_0wfyh")
 
-[node name="FinalScore" type="Label" parent="LevelComplete/Panel"]
+[node name="FinalScore" type="Label" parent="LevelComplete/Panel" unique_id=1642281202]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -62,7 +63,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="Continue" type="Button" parent="LevelComplete/Panel"]
+[node name="Continue" type="Button" parent="LevelComplete/Panel" unique_id=113482814]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -74,7 +75,7 @@ theme = ExtResource("2_0wfyh")
 theme_override_font_sizes/font_size = 156
 text = "Continue"
 
-[node name="Restart" type="Button" parent="LevelComplete/Panel"]
+[node name="Restart" type="Button" parent="LevelComplete/Panel" unique_id=1003977317]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -90,7 +91,7 @@ theme = ExtResource("2_0wfyh")
 theme_override_font_sizes/font_size = 156
 text = "Restart"
 
-[node name="Home" type="Button" parent="LevelComplete/Panel"]
+[node name="Home" type="Button" parent="LevelComplete/Panel" unique_id=514987652]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -105,7 +106,7 @@ theme = ExtResource("2_0wfyh")
 theme_override_font_sizes/font_size = 156
 text = "Home"
 
-[node name="MainMenu" type="Control" parent="."]
+[node name="MainMenu" type="Control" parent="." unique_id=2110947789]
 layout_direction = 2
 layout_mode = 3
 anchors_preset = 15
@@ -115,7 +116,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_0wfyh")
 
-[node name="Panel" type="Panel" parent="MainMenu"]
+[node name="Panel" type="Panel" parent="MainMenu" unique_id=1519331916]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -128,7 +129,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_0wfyh")
 
-[node name="Title" type="Label" parent="MainMenu/Panel"]
+[node name="Title" type="Label" parent="MainMenu/Panel" unique_id=1045406191]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -141,7 +142,7 @@ theme = ExtResource("2_0wfyh")
 theme_override_font_sizes/font_size = 256
 text = "Visual Trivia"
 
-[node name="Level1" type="Button" parent="MainMenu/Panel"]
+[node name="Level1" type="Button" parent="MainMenu/Panel" unique_id=1501219888]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -155,7 +156,7 @@ theme = ExtResource("2_0wfyh")
 text = "Start Level One"
 autowrap_mode = 3
 
-[node name="EasyGame" type="Button" parent="MainMenu/Panel"]
+[node name="EasyGame" type="Button" parent="MainMenu/Panel" unique_id=1275812925]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -168,7 +169,7 @@ theme = ExtResource("2_0wfyh")
 text = "Start Easy Game"
 autowrap_mode = 3
 
-[node name="MediumGame" type="Button" parent="MainMenu/Panel"]
+[node name="MediumGame" type="Button" parent="MainMenu/Panel" unique_id=650779921]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -185,7 +186,7 @@ theme = ExtResource("2_0wfyh")
 text = "Start Medium Game"
 autowrap_mode = 3
 
-[node name="HardGame" type="Button" parent="MainMenu/Panel"]
+[node name="HardGame" type="Button" parent="MainMenu/Panel" unique_id=2064399958]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -201,7 +202,7 @@ theme = ExtResource("2_0wfyh")
 text = "Start Hard Game"
 autowrap_mode = 3
 
-[node name="RandomGame" type="Button" parent="MainMenu/Panel"]
+[node name="RandomGame" type="Button" parent="MainMenu/Panel" unique_id=177711960]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -218,7 +219,7 @@ theme = ExtResource("2_0wfyh")
 text = "Start Random Game"
 autowrap_mode = 3
 
-[node name="Exit" type="Button" parent="MainMenu/Panel"]
+[node name="Exit" type="Button" parent="MainMenu/Panel" unique_id=1745733818]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -235,27 +236,25 @@ theme = ExtResource("2_0wfyh")
 text = "Exit"
 autowrap_mode = 3
 
-[node name="Help" type="Label" parent="MainMenu/Panel"]
+[node name="Help" type="Label" parent="MainMenu/Panel" unique_id=1991851075]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
+anchors_preset = 3
+anchor_left = 1.0
 anchor_top = 1.0
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -921.5
-offset_top = -179.0
-offset_right = 921.5
-grow_horizontal = 2
+offset_left = -1843.0
+offset_top = -88.0
+grow_horizontal = 0
 grow_vertical = 0
 theme = ExtResource("2_0wfyh")
 theme_override_font_sizes/font_size = 64
-text = "©Popescul George Teodor, Georgiana Murgu, Bojoga Andrei
-©FIESC, USV, Elemente grafica calculator, proiect."
-horizontal_alignment = 1
+text = "©document10 2026"
+horizontal_alignment = 2
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="CR" type="Label" parent="MainMenu/Panel"]
+[node name="CR" type="Label" parent="MainMenu/Panel" unique_id=566881271]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -270,7 +269,7 @@ text = "Esc: Menu; R: Restart"
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="Music" type="Button" parent="MainMenu/Panel"]
+[node name="Music" type="Button" parent="MainMenu/Panel" unique_id=1970631398]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -283,7 +282,7 @@ theme = ExtResource("2_0wfyh")
 toggle_mode = true
 icon = ExtResource("3_choun")
 
-[node name="SFX" type="Button" parent="MainMenu/Panel"]
+[node name="SFX" type="Button" parent="MainMenu/Panel" unique_id=1578890237]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -295,21 +294,17 @@ theme = ExtResource("2_0wfyh")
 toggle_mode = true
 icon = ExtResource("4_ya4ey")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=1947522112]
 one_shot = true
 autostart = true
 
-[node name="GameUI" type="Control" parent="."]
+[node name="GameUI" type="Control" parent="." unique_id=739320259]
 visible = false
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
 theme = ExtResource("2_0wfyh")
 
-[node name="Elapsed" type="Label" parent="GameUI"]
+[node name="Elapsed" type="Label" parent="GameUI" unique_id=538365996]
 layout_mode = 1
 offset_left = -1896.0
 offset_top = -1045.0
@@ -319,31 +314,43 @@ theme = ExtResource("2_0wfyh")
 theme_override_font_sizes/font_size = 56
 text = "Time:"
 
-[node name="AudioManager" type="Node" parent="."]
+[node name="Pause" type="Button" parent="GameUI" unique_id=56270601]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 1654.0
+offset_top = -1074.0
+offset_right = 1914.0
+offset_bottom = -814.0
+grow_vertical = 0
+icon = ExtResource("5_ya4ey")
+
+[node name="AudioManager" type="Node" parent="." unique_id=1326090352]
 script = ExtResource("3_sugp2")
 
-[node name="MainMusic" type="AudioStreamPlayer" parent="AudioManager"]
+[node name="MainMusic" type="AudioStreamPlayer" parent="AudioManager" unique_id=198926588]
 stream = ExtResource("4_85g3d")
 volume_db = -5.0
 autoplay = true
 bus = &"Music"
 
-[node name="Bonus" type="AudioStreamPlayer" parent="AudioManager"]
+[node name="Bonus" type="AudioStreamPlayer" parent="AudioManager" unique_id=1032071392]
 stream = ExtResource("4_tipki")
 volume_db = -10.0
 bus = &"SFX"
 
-[node name="Drop" type="AudioStreamPlayer" parent="AudioManager"]
+[node name="Drop" type="AudioStreamPlayer" parent="AudioManager" unique_id=1816239112]
 stream = ExtResource("3_o6xl0")
 volume_db = -10.0
 bus = &"SFX"
 
-[node name="Select" type="AudioStreamPlayer" parent="AudioManager"]
+[node name="Select" type="AudioStreamPlayer" parent="AudioManager" unique_id=1803767780]
 stream = ExtResource("6_choun")
 volume_db = -10.0
 bus = &"SFX"
 
-[node name="Pickup" type="AudioStreamPlayer" parent="AudioManager"]
+[node name="Pickup" type="AudioStreamPlayer" parent="AudioManager" unique_id=610584966]
 stream = ExtResource("5_85g3d")
 volume_db = -20.0
 bus = &"SFX"
@@ -359,3 +366,4 @@ bus = &"SFX"
 [connection signal="pressed" from="MainMenu/Panel/Exit" to="." method="_on_exit_pressed"]
 [connection signal="toggled" from="MainMenu/Panel/Music" to="." method="_on_music_toggled"]
 [connection signal="toggled" from="MainMenu/Panel/SFX" to="." method="_on_sfx_toggled"]
+[connection signal="pressed" from="GameUI/Pause" to="." method="_on_pause_pressed"]
